@@ -1,0 +1,18 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Image {
+  createdAt     DateTime @default(now())
+  enhancedImage Json?
+  id            String   @id @default(cuid())
+  name          String?
+  originalImage Json?
+  processed     Boolean?
+  updatedAt     DateTime @updatedAt
+}
